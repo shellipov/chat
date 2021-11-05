@@ -1,0 +1,14 @@
+@import "./reset.scss"; 
+
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+.container {
+  height: calc(100vh - 60px);
+  max-width: 1440px;
+  width: 90vw;
+  margin: 0 auto;
+}
+

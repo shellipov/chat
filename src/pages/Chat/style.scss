@@ -1,0 +1,16 @@
+.chat_window{
+  height: 50vh;
+  width: 100%;
+  background: rgb(204, 204, 204)
+}
+
+.chat_form{
+  width: 100%;
+  background: rgb(112, 102, 102);
+  input{
+     width: 80%;
+  }
+  button{
+     width: 20%;
+  }
+}
