@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Box, Typography, Paper } from "@mui/material";
+import { Button, Box, Typography, Paper, Fade } from "@mui/material";
 import { useActions } from "../../hooks/useActions";
 import { useSelector } from "react-redux";
 import styles from "../../style/styles";
@@ -10,6 +10,7 @@ const Profile = () => {
   return (
     <>
       <Box sx={styles.fullHeight}>
+      <Fade in style={{ transitionDelay: '100ms'}}>
         <Paper elevation={4} sx={{ backgroundColor: "#caebf5" }}>
           <Box p={5}>
             <Typography variant="h4" m={3} sx={styles.center}>
@@ -26,6 +27,7 @@ const Profile = () => {
             </Box>
           </Box>
         </Paper>
+        </Fade>
       </Box>
     </>
   );

@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useActions } from "../../hooks/useActions";
 import ChatController from "../../utils/chatController";
-import { Box, Paper, Typography, Button, TextField } from "@mui/material";
+import { Box, Paper, Typography, Button, TextField, Fade } from "@mui/material";
 import Message from "../../components/Message/Message";
 import styles from "../../style/styles";
 import "./style.scss";
@@ -27,17 +27,18 @@ const Chat = () => {
   function sendMessage(e) {
     e.preventDefault();
     if (message.length > 0) {
+      const date = new Date().toLocaleString()
       socket.current.send(
         JSON.stringify({
           event: "message",
           message,
+          date,
           from: user_id,
           to: recipient_id,
         })
       );
       setMessage("");
     }
-    // scroll();
   }
 
   useEffect(() => {
@@ -56,6 +57,7 @@ const Chat = () => {
   return (
     <>
       <Box sx={styles.fullHeight}>
+        <Fade in style={{ transitionDelay: '100ms'}}>
         <Paper elevation={4} sx={{ backgroundColor: "#caebf5" }}>
           <Box p={5}>
             <Typography
@@ -104,6 +106,7 @@ const Chat = () => {
             </form>
           </Box>
         </Paper>
+        </Fade>
       </Box>
     </>
   );

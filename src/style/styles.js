@@ -2,6 +2,7 @@ const styles = {
   center: { display: "flex", justifyContent: "center", alignItems: "center" },
   row: { display: "flex", flexDirection: "row"},
   around: { display: "flex", flexDirection: "row",  justifyContent: "space-around", alignItems: "center" },
+  between: { display: "flex", flexDirection: "row",  justifyContent: "space-between", alignItems: "center" },
 
   fullHeight: {
     height: "calc(100vh - 60px)",

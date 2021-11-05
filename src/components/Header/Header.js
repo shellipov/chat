@@ -33,7 +33,7 @@ const Header = () => {
               <Link
                 className="header_link"
                 to={"/profile"}
-              >{`Профиль ${user.username}`}</Link>
+              > {`Профиль ${user.username}`}</Link>
             </Box>
           </Box>
         </>

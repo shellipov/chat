@@ -1,13 +1,15 @@
 import axios from "axios";
 
-const url = process.env.REACT_APP_API_URL_DEV || "http://localhost:5001";
+const $host = axios.create({
+  baseURL: process.env.REACT_APP_API_URL_DEV || "http://localhost:5001"
+})
 
 export async function authUser(userData) {
-  return await axios.post(`${url}/auth/login`, userData);
+  return await $host.post(`/auth/login`, userData);
 }
 export async function getUsers() {
-  return await axios.get(`${url}/users`);
+  return await $host.get(`/users`);
 }
 export async function getUsername(id) {
-  return await axios.post(`${url}/users/user`,{id});
+  return await $host.post(`/users/user`,{id});
 }

@@ -17,8 +17,11 @@ const Message = ({ mes, user_id }) => {
           backgroundColor: mes.id === user_id ? "#CEF2B2" : "#F2B2B2",
         }}
       >
-        <Box p={1} >
+        <Box p={1} sx={{
+          textAlign: mes.id === user_id ? 'right' : "left",
+        }} >
           <Typography>{mes.message}</Typography>
+          <Typography variant="body2">{mes.date}</Typography>
         </Box>
       </Paper>
     </Box>
