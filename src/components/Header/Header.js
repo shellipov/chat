@@ -1,26 +1,44 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { AppBar, Box, Typography } from "@mui/material";
+import styles from "../../style/styles";
 import "./style.scss";
 
 const Header = () => {
-  const {isAuth, user} = useSelector((state) => state.auth);
+  const { isAuth, user } = useSelector((state) => state.auth);
 
   return (
-    <header>
-      <div className="header_logo">CHAT</div>
+    <AppBar
+      position="static"
+      sx={{
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-around",
+        backgroundColor: "#b2f2d7",
+      }}
+    >
+      <Typography variant="h4" sx={{ textShadow: "1px 1px 2px gray" }}>
+        Чат
+      </Typography>
       {isAuth && (
         <>
-          <nav className="">
-            <Link to={"/users"}>Пользователи</Link>
-            <Link to={"/profile"}>Профиль</Link>
-          </nav>
-          <div className="username">
-            <span>{`Вы вошли как ${user.username}`}</span>
-          </div>
+          <Box sx={styles.center}>
+            <Box m={2}>
+              <Link className={"header_link"} to={"/users"}>
+                Пользователи
+              </Link>
+            </Box>
+            <Box m={2}>
+              <Link
+                className="header_link"
+                to={"/profile"}
+              >{`Профиль ${user.username}`}</Link>
+            </Box>
+          </Box>
         </>
       )}
-    </header>
+    </AppBar>
   );
 };
 

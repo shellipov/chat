@@ -1,49 +1,70 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useActions } from "../../hooks/useActions";
-import "./style.scss";
+import { Button, TextField, Box, Typography, Paper } from "@mui/material";
+import styles from "../../style/styles";
 
 const Auth = () => {
   const { login } = useActions();
   const { error, loading } = useSelector((state) => state.auth);
-
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
-  async function auth() {
+  async function auth(e) {
+    e.preventDefault();
     login({ username, password });
   }
 
   if (loading) {
     return (
       <>
-        <h1>Загрузка...</h1>
+        <Box sx={styles.fullHeight}>
+          <Typography variant="h4" sx={styles.center}>
+            Загрузка...
+          </Typography>
+        </Box>
       </>
     );
   }
 
   return (
-    <section className="auth_page">
-      <div className="form">
-        <h1>Авторизация</h1>
-        <div className="error_block">{error}</div>
-        <input
-          name="username"
-          value={username}
-          onChange={(e) => setUserName(e.target.value)}
-          type="text"
-        ></input>
-        <input
-          name="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          type="password"
-        ></input>
-        <button onClick={auth} type="submit">
-          Войти
-        </button>
-      </div>
-    </section>
+    <Box sx={styles.fullHeight}>
+      <Paper elevation={4}>
+        <Box p={6} sx={{ backgroundColor: "#caebf5" }}>
+          <form onSubmit={auth}>
+            <Typography variant="h4" sx={styles.center}>
+              Авторизация
+            </Typography>
+            <Typography sx={{ ...styles.error, ...styles.center }}>
+              {error}
+            </Typography>
+            <Box m={2}>
+              <Paper>
+                <TextField
+                  label="Логин"
+                  value={username}
+                  onChange={(e) => setUserName(e.target.value)}
+                  type="text"
+                ></TextField>
+              </Paper>
+            </Box>
+            <Box m={2}>
+              <Paper>
+                <TextField
+                  label="Пароль"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  type="password"
+                ></TextField>
+              </Paper>
+            </Box>
+            <Box sx={styles.center}>
+              <Button type="submit">Войти</Button>
+            </Box>
+          </form>
+        </Box>
+      </Paper>
+    </Box>
   );
 };
 

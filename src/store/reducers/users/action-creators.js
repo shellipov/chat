@@ -25,7 +25,6 @@ export const UsersActionCreators = {
       dispatch(UsersActionCreators.startGetUsers());
       const response = await getUsers();
       const data = response.data;
-      console.log(data);
       if (data) {
         dispatch(UsersActionCreators.seccessGetUsers(data));
       } else {

@@ -24,7 +24,6 @@ export const AuthActionCreators = {
       dispatch(AuthActionCreators.srartAuth());
       const response = await authUser(userData);
       const data = response.data
-      console.log(data);
       if (data.auth) {
         localStorage.setItem("isAuth", "true");
         localStorage.setItem("username", JSON.stringify(data.user));
@@ -36,33 +35,4 @@ export const AuthActionCreators = {
       dispatch(AuthActionCreators.errorAuth(error));
     }
   },
-  // signin:
-  //   (username: string, password: string, confirmPassword: string) =>
-  //   async (dispatch: AppDispatch) => {
-  //     try {
-  //       if (password !== confirmPassword) {
-  //         dispatch(AuthActionCreators.setError(`Пароли не совпадают`));
-  //       } else {
-  //         const { newUser, error }: { newUser?: IUser; error?: string } =
-  //           await fakeApi.addUser(username, password);
-  //         if (error) {
-  //           dispatch(
-  //             AuthActionCreators.setError(`Произошлa ошибка - ${error}`)
-  //           );
-  //         }
-  //         if (newUser) {
-  //           localStorage.setItem("isAuth", "true");
-  //           localStorage.setItem("username", username);
-  //           dispatch(AuthActionCreators.setUser(newUser));
-  //           dispatch(AuthActionCreators.setIsAuth(true));
-  //         }
-  //       }
-  //     } catch (error: any) {
-  //       dispatch(
-  //         AuthActionCreators.setError(
-  //           `Произошлa ошибка - ${error.message ? error.message : null}`
-  //         )
-  //       );
-  //     }
-  //   },
 };

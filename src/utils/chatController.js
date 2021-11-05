@@ -4,7 +4,8 @@ export default function ChatController(
   recipient_id,
   setWSConnection,
   setWSError,
-  setChatMessages
+  setChatMessages,
+  chatWindow
 ) {
   socket.current = new WebSocket("ws://localhost:5001");
 
@@ -22,6 +23,9 @@ export default function ChatController(
     const mess = JSON.parse(event.data);
     if (mess.messages) {
       setChatMessages(mess.messages);
+      if (chatWindow.current) {
+        chatWindow.current.scrollTo(0, chatWindow.current.scrollHeight);
+      }
     }
   };
 

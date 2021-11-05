@@ -1,11 +1,15 @@
 header {
-  background: #b2f2d7;
-  display: flex;
-  justify-content: center;
+
   align-items: center;
   height: 60px;
 }
 
-.header_logo {
-  font-size: 20px;
+.header_link {
+  text-decoration: none;
+  color: rgb(226, 140, 140);
+  transition: 0.3s;
+  &:hover {
+    color: rgb(175, 60, 60);
+  }
 }
+

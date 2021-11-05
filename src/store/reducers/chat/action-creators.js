@@ -28,7 +28,6 @@ export const ChatActionCreators = {
       dispatch(ChatActionCreators.startGetUsername());
       const response = await getUsername(id);
       const data = response.data;
-      console.log(data);
       if (data) {
         dispatch(ChatActionCreators.seccessGetUsername(data));
       } else {

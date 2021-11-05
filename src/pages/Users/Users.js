@@ -3,6 +3,9 @@ import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useActions } from "../../hooks/useActions";
 import { useSelector } from "react-redux";
+import UserCard from "../../components/UserCard/UserCard";
+import { Box, Paper, Typography } from "@mui/material";
+import styles from "../../style/styles";
 
 const Users = () => {
   const history = useHistory();
@@ -20,26 +23,33 @@ const Users = () => {
 
   return (
     <>
-      {loading && <h1>Загрузка...</h1>}
+      <Box sx={styles.fullHeight}>
+        <Paper elevation={4} sx={{backgroundColor: "#caebf5" }}>
+          <Box p={5}>
+            {loading && <Typography variant="h4">Загрузка...</Typography>}
 
-      {error && (
-        <>
-          <h1>Ошибка</h1>
-          <p>{error}</p>
-        </>
-      )}
+            {error && (
+              <>
+                <Typography variant="h4">Ошибка</Typography>
+                <Typography>{error}</Typography>
+              </>
+            )}
 
-      {users.length > 0 && (
-        <>
-          <h1>Пользователи</h1>
-          {users.filter(user => user.id !== userData.id ).map((user) => (
-            <div key={user.id} className="userCard">
-              <span >{user.username}</span>
-              <button onClick={() => openChat(user.id)}>Написать</button>
-            </div>
-          ))}
-        </>
-      )}
+            {users.length > 0 && (
+              <>
+                <Typography p={5} variant="h4">
+                  Пользователи
+                </Typography>
+                {users
+                  .filter((user) => user.id !== userData.id)
+                  .map((user) => (
+                    <UserCard key={user.id} user={user} openChat={openChat} />
+                  ))}
+              </>
+            )}
+          </Box>
+        </Paper>
+      </Box>
     </>
   );
 };
