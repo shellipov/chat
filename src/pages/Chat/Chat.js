@@ -65,9 +65,9 @@ const Chat = () => {
             >{`Чат c пользовалелем ${recipient_username}`}</Typography>
             <Box sx={styles.center}>
               <Typography m={1}>
-                {connection ? `соединение установлено` : `нет соединения`}
+                {connection ? `Соединение установлено` : `Нет соединения`}
               </Typography>
-              {ws_error && <Typography>`${ws_error}`</Typography>}
+              {ws_error && <Typography>{ws_error}</Typography>}
             </Box>
 
             <Paper elevation={4}>
