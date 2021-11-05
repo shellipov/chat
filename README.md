@@ -9,10 +9,15 @@
 Есть список пользователей для входа:
 
 > username: "UserName", password: "Password"
+
 > username: "dima", password: "dima"
+
 > username: "sasha", password: "sasha"
+
 > username: "igor", password: "igor"
+
 > username: "dasha", password: "dasha"
+
 > username: "masha", password: "masha"
 
 ![screenshot](readme-assets/1.png)
